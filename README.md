@@ -12,13 +12,24 @@ fins estudo do SOLID e Clean Code.
 
     User: Infnet
     Password: 
-   
+
+
+### Autenticação 
+
    Login
+
+### 
+
+   Atualizar dados de usuário
+
+### Informações
    Extrato
    Saldo
+
+### Movimentações
    Saque
+   Deposito
    Transferência
-   Atualizar dados
    Pagar boleto 
-   Deposito 
+
    
