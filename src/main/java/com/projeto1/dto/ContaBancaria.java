@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class Conta {
+public class ContaBancaria {
 
     private LocalDateTime dataAbertura;
     private LocalDateTime dataEncerramento;
     private BigDecimal saldo;
     private List<HistoricoMovimentacoes> HistoricoMovimentacoes;
 
-    public Conta(LocalDateTime dataAbertura, LocalDateTime dataEncerramento, BigDecimal saldo, List<HistoricoMovimentacoes> historicoMovimentacoes) {
+    public ContaBancaria(LocalDateTime dataAbertura, LocalDateTime dataEncerramento, BigDecimal saldo, List<HistoricoMovimentacoes> historicoMovimentacoes) {
         this.dataAbertura = dataAbertura;
         this.dataEncerramento = dataEncerramento;
         this.saldo = saldo;
@@ -42,11 +42,11 @@ public class Conta {
         this.saldo = saldo;
     }
 
-    public List<com.projeto1.dto.HistoricoMovimentacoes> getHistoricoMovimentacoes() {
+    public List<HistoricoMovimentacoes> getHistoricoMovimentacoes() {
         return HistoricoMovimentacoes;
     }
 
-    public void setHistoricoMovimentacoes(List<com.projeto1.dto.HistoricoMovimentacoes> historicoMovimentacoes) {
-        HistoricoMovimentacoes = historicoMovimentacoes;
+    public void setHistoricoMovimentacoes(HistoricoMovimentacoes historicoMovimentacoes) {
+        HistoricoMovimentacoes.add(historicoMovimentacoes);
     }
 }

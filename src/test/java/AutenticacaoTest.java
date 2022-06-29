@@ -6,9 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AutenticacaoTest {
 
-
     @Test
-    public void Autenticar (){
+    public void QUANDO_USUARIO_SENHA_CORRETO_USUARIO_ATIVO_AUTENTICA (){
 
     Autenticacao autenticacao = new Autenticacao();
 
@@ -16,5 +15,6 @@ public class AutenticacaoTest {
     assertEquals("jasmin", usuario.getUsuario());
 
     }
+
 
 }

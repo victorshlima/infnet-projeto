@@ -3,7 +3,9 @@ package com.projeto1;
 import com.projeto1.autenticacao.Autenticacao;
 import com.projeto1.dto.Usuario;
 import com.projeto1.mensagens.MensagensUtils;
+import com.projeto1.operacoes.Saque;
 
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 import static com.projeto1.mensagens.MensagensEnum.*;
@@ -29,12 +31,33 @@ public class Main {
 
             Usuario usuario = new Autenticacao().autenticar(user,senha );
             if (usuario == null){
+                MensagensUtils.printMensagem("Usuário invalido, SAINDO!!!");
                 break;
             }
+            MensagensUtils.printMensagem("Operações");
+            MensagensUtils.printMensagem("saldo | saque | deposito | extrato | pagar boleto");
             // converter em metodo
             while (scanner.hasNext()){
-                String dadosEntradaUsuario =  scanner.next();
-                if (dadosEntradaUsuario.equals("exit")){
+                String entradaUsario =  scanner.next();
+                switch (entradaUsario){
+                    case "saque" :
+                    {
+                        MensagensUtils.printMensagem("Insira o valor seprado por .");
+                        BigDecimal valor = scanner.nextBigDecimal();
+                        new Saque().sacar(usuario, valor);
+                    }
+                        break;
+                    case "desposito":
+                        break;
+                    case  "extrato" :
+                        break;
+                    case  "saldo" : MensagensUtils.printMensagem( "O saldo da conta é: " + usuario.getConta().getSaldo());
+                      break;
+                    case  "pagar boleto" :
+                        break;
+                    default: MensagensUtils.printMensagem("Digite Novamente - saldo | saque | deposito | extrato | pagar boleto");
+                }
+                if (entradaUsario.equals("exit")){
                     break;
                 }
             }
