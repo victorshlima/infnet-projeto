@@ -3,6 +3,7 @@ package com.projeto1;
 import com.projeto1.autenticacao.Autenticacao;
 import com.projeto1.dto.Usuario;
 import com.projeto1.mensagens.MensagensUtils;
+import com.projeto1.operacoes.Extrato;
 import com.projeto1.operacoes.Saque;
 
 import java.math.BigDecimal;
@@ -49,7 +50,10 @@ public class Main {
                         break;
                     case "desposito":
                         break;
-                    case  "extrato" :
+                    case  "extrato" :{
+                        //TODO filtrat por data
+                        new Extrato().imprimir(usuario, 30);
+                    }
                         break;
                     case  "saldo" : MensagensUtils.printMensagem( "O saldo da conta é: " + usuario.getConta().getSaldo());
                       break;
