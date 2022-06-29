@@ -1,11 +1,12 @@
 package com.projeto1;
 
+import com.projeto1.autenticacao.Autenticacao;
+import com.projeto1.dto.Usuario;
 import com.projeto1.mensagens.MensagensUtils;
 
 import java.util.Scanner;
 
-import static com.projeto1.mensagens.MensagensEnum.MENSAGEM_FINAL;
-import static com.projeto1.mensagens.MensagensEnum.MENSAGEM_INICIAL;
+import static com.projeto1.mensagens.MensagensEnum.*;
 
 public class Main {
 
@@ -15,18 +16,28 @@ public class Main {
 
     MensagensUtils.printMensagem(MENSAGEM_INICIAL.getDescricao());
     System.out.println("----------------Para sair digite exit----------------");
-    
-    //poderia usar o observer para disparar os eventos na conta
 
+    //poderia usar o observer para disparar os eventos na conta
         Scanner scanner = new Scanner(System.in);
 
+        // converter em metodo
+        MensagensUtils.printMensagem(MENSAGEM_LOGIN.getDescricao());
         while (scanner.hasNext()){
-          String dadosEntradaUsuario =  scanner.next();
+            String user =  scanner.next();
+            MensagensUtils.printMensagem(MENSAGEM_SENHA.getDescricao());
+            String senha =  scanner.next();
 
-
-           if (dadosEntradaUsuario.equals("exit")){
-               break;
-           }
+            Usuario usuario = new Autenticacao().autenticar(user,senha );
+            if (usuario == null){
+                break;
+            }
+            // converter em metodo
+            while (scanner.hasNext()){
+                String dadosEntradaUsuario =  scanner.next();
+                if (dadosEntradaUsuario.equals("exit")){
+                    break;
+                }
+            }
 
         }
 

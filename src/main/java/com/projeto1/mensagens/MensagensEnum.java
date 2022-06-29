@@ -3,6 +3,7 @@ package com.projeto1.mensagens;
 public enum MensagensEnum {
 
     MENSAGEM_LOGIN("----------------Insira o Usuário----------------"),
+    MENSAGEM_SENHA("----------------Insira a Senha----------------"),
     MENSAGEM_INICIAL("----------------Bem Vindo----------------"),
     MENSAGEM_FINAL("----------------Encerrando----------------");
 

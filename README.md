@@ -3,7 +3,7 @@
 ####################################################
 Banco Merci -  Caixa eletronico
 
-Essa aplicação simula as operações de um clinte ao acessar um caixa eletrônico para 
+Essa aplicação simula as operações de um cliente em uma banco com uma interface de terminal para 
 fins estudo do SOLID e Clean Code.
 
 

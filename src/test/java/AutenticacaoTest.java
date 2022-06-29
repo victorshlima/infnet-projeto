@@ -7,14 +7,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AutenticacaoTest {
 
 
-
     @Test
     public void Autenticar (){
 
-        Autenticacao autenticacao = new Autenticacao();
+    Autenticacao autenticacao = new Autenticacao();
 
-       Usuario usuario = autenticacao.Autenticar("Jasmin", "J@smin!23");
-        assertEquals("Jasmin", usuario.getUsuario());
+    Usuario usuario = autenticacao.autenticar("jasmin", "123");
+    assertEquals("jasmin", usuario.getUsuario());
 
     }
 
