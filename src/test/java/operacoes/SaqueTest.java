@@ -1,3 +1,5 @@
+package operacoes;
+
 import com.projeto1.autenticacao.Autenticacao;
 import com.projeto1.dto.Usuario;
 import com.projeto1.operacoes.Saque;

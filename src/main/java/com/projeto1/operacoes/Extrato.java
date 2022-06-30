@@ -24,9 +24,22 @@ public class Extrato {
                     +h.getSaldoDepois()
                     +" getValor: "
                     +h.getValor()
+                    +" getTipoMovimentacao: "
+                    +h.getTipoMovimentacao()
+                    + exibeUser(h.getNomeUsuario())
                     +"\n"
                     + "----------------------------------------------------------------------------------------------------------------------"
             );
         });
     }
+
+    private String exibeUser(String nomeUsuario){
+        if (nomeUsuario != null)
+        return " getNomeUsuario: " + (nomeUsuario
+        );
+        else
+        return "";
+    }
+
+
 }

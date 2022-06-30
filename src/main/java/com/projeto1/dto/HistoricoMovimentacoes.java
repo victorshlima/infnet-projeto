@@ -13,6 +13,7 @@ public class HistoricoMovimentacoes {
     private BigDecimal valor;
     private BigDecimal saldoAntes;
     private BigDecimal saldoDepois;
+    private String nomeUsuario;
 
     public HistoricoMovimentacoes(UUID uuid, TipoMovimentacao tipoMovimentacao, LocalDateTime dataMovimentacao, BigDecimal valor, BigDecimal saldoAntes, BigDecimal saldoDepois) {
         this.uuid = uuid;
@@ -21,6 +22,24 @@ public class HistoricoMovimentacoes {
         this.valor = valor;
         this.saldoAntes = saldoAntes;
         this.saldoDepois = saldoDepois;
+    }
+
+    public HistoricoMovimentacoes(UUID uuid, TipoMovimentacao tipoMovimentacao, LocalDateTime dataMovimentacao, BigDecimal valor, BigDecimal saldoAntes, BigDecimal saldoDepois, String nomeUsuario) {
+        this.uuid = uuid;
+        this.tipoMovimentacao = tipoMovimentacao;
+        this.dataMovimentacao = dataMovimentacao;
+        this.valor = valor;
+        this.saldoAntes = saldoAntes;
+        this.saldoDepois = saldoDepois;
+        this.nomeUsuario = nomeUsuario;
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        nomeUsuario = nomeUsuario;
     }
 
     public UUID getUuid() {

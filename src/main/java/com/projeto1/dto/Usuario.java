@@ -29,7 +29,7 @@ public class Usuario {
         this.uuid = uuid;
     }
 
-    public String getUsuario() {
+    public String getNomeUsuario() {
         return usuario;
     }
 

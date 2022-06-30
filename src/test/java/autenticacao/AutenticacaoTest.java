@@ -1,3 +1,5 @@
+package autenticacao;
+
 import com.projeto1.autenticacao.Autenticacao;
 import com.projeto1.dto.Usuario;
 import org.junit.jupiter.api.Test;
@@ -12,7 +14,7 @@ public class AutenticacaoTest {
     Autenticacao autenticacao = new Autenticacao();
 
     Usuario usuario = autenticacao.autenticar("jasmin", "123");
-    assertEquals("jasmin", usuario.getUsuario());
+    assertEquals("jasmin", usuario.getNomeUsuario());
 
     }
 

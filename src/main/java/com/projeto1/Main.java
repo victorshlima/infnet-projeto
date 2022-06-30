@@ -3,8 +3,8 @@ package com.projeto1;
 import com.projeto1.autenticacao.Autenticacao;
 import com.projeto1.dto.Usuario;
 import com.projeto1.mensagens.MensagensUtils;
-import com.projeto1.operacoes.Extrato;
-import com.projeto1.operacoes.Saque;
+import com.projeto1.operacoes.*;
+import com.projeto1.repository.Repository;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -18,57 +18,68 @@ public class Main {
     // TODO projeto final converter esse sysout em um util, talves usar um oberver, ou status para
 
     MensagensUtils.printMensagem(MENSAGEM_INICIAL.getDescricao());
-    System.out.println("----------------Para sair digite exit----------------");
-
-    //poderia usar o observer para disparar os eventos na conta
+    System.out.println(PARA_SAIR.getDescricao());
         Scanner scanner = new Scanner(System.in);
-
-        // converter em metodo
         MensagensUtils.printMensagem(MENSAGEM_LOGIN.getDescricao());
         while (scanner.hasNext()){
+
             String user =  scanner.next();
             MensagensUtils.printMensagem(MENSAGEM_SENHA.getDescricao());
             String senha =  scanner.next();
-
             Usuario usuario = new Autenticacao().autenticar(user,senha );
+
             if (usuario == null){
-                MensagensUtils.printMensagem("Usuário invalido, SAINDO!!!");
+                MensagensUtils.printMensagem(USUARIO_INVALIDO.getDescricao());
                 break;
             }
-            MensagensUtils.printMensagem("Operações");
-            MensagensUtils.printMensagem("saldo | saque | deposito | extrato | pagar boleto");
-            // converter em metodo
-            while (scanner.hasNext()){
-                String entradaUsario =  scanner.next();
-                switch (entradaUsario){
-                    case "saque" :
-                    {
-                        MensagensUtils.printMensagem("Insira o valor seprado por .");
-                        BigDecimal valor = scanner.nextBigDecimal();
-                        new Saque().sacar(usuario, valor);
-                    }
-                        break;
-                    case "desposito":
-                        break;
-                    case  "extrato" :{
-                        //TODO filtrat por data
-                        new Extrato().imprimir(usuario, 30);
-                    }
-                        break;
-                    case  "saldo" : MensagensUtils.printMensagem( "O saldo da conta é: " + usuario.getConta().getSaldo());
-                      break;
-                    case  "pagar boleto" :
-                        break;
-                    default: MensagensUtils.printMensagem("Digite Novamente - saldo | saque | deposito | extrato | pagar boleto");
+            operacoes(scanner, usuario);
+        }
+     MensagensUtils.printMensagem(MENSAGEM_FINAL.getDescricao());
+    }
+
+    public static void operacoes(Scanner scanner, Usuario usuarioLogado){
+        MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
+        while (scanner.hasNext()){
+            String entradaUsario =  scanner.next();
+            switch (entradaUsario){
+                case "saque" :
+                {
+                    new Saque().sacar(usuarioLogado, scanValor(scanner));
                 }
-                if (entradaUsario.equals("exit")){
+                break;
+                case "transf": {
+                    MensagensUtils.printMensagem(MENSAGEM_TRANSF_DESTINO.getDescricao());
+                    String usuarioDestino =  scanner.next();
+                    new Transferencia().transferir(usuarioLogado, new Repository().getUsuarioPeloNome(usuarioDestino), scanValor(scanner));
+                }
                     break;
+                case "desposito": {
+                    scanValor(scanner);
+                    new Deposito().depositar(usuarioLogado, scanValor(scanner));
                 }
+                    break;
+                case  "extrato" :{
+                    //TODO filtrat por data
+                    new Extrato().imprimir(usuarioLogado, 30);
+                }
+                break;
+                case  "saldo" : MensagensUtils.printMensagem( MENSAGEM_SALDO.getDescricao() + usuarioLogado.getConta().getSaldo());
+                    break;
+                case  "pagar boleto" :
+                    break;
+                default: MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
+            }
+            if (entradaUsario.equals(EXIT.getDescricao())){
+                break;
             }
 
         }
 
-     MensagensUtils.printMensagem(MENSAGEM_FINAL.getDescricao());
+    }
+
+    public static BigDecimal scanValor(Scanner scanner) {
+        MensagensUtils.printMensagem("Insira o valor seprado por .");
+        return  scanner.nextBigDecimal();
     }
 
 }

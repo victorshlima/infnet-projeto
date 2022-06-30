@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class Repository {
 
@@ -45,5 +46,13 @@ public class Repository {
                 new Pessoa(UUID.randomUUID(), "maria", "Pereira", "213.321.456-02", LocalDateTime.of(1990, 03, 03, 12, 12)),
                 new ContaBancaria(LocalDateTime.now(), LocalDateTime.now(), BigDecimal.valueOf(3000.00), historicoMovimentacoesMaria )));
     }
+
+    public Usuario getUsuarioPeloNome(String nomeUsuario){
+       return getUsuarios().stream()
+                .filter(u -> u.getNomeUsuario().equals(nomeUsuario))
+                .filter(u -> u.getStatus().equals(Status.ATIVO))
+                .collect(Collectors.toList()).get(0);
+    }
+
 
 }
