@@ -9,7 +9,7 @@ public class Saldo {
     public Saldo() {}
 
     public Boolean verificaSaldo(Usuario usuario, BigDecimal valor){
-        if (usuario.getConta().getSaldo().compareTo(valor) > 0) {
+        if (usuario.getConta().getSaldo().compareTo(valor) >= 0) {
             return true;
         } else {
             return false;

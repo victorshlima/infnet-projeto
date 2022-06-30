@@ -31,7 +31,6 @@ public class Transferencia {
                     TipoMovimentacao.TRANSFERENCIA, LocalDateTime.now(), valorTransferencia, usuarioDestino.getConta().getSaldo(), novoSaldoDestino, usuarioOrigen.getNomeUsuario()));
             usuarioDestino.getConta().setSaldo(novoSaldo);
 
-
             MensagensUtils.printMensagem(OPERACAO_CONCLUIDA.getDescricao());
         } else {
             MensagensUtils.printMensagem(MENSAGEM_ERRO_TRANSFERENCIA.getDescricao());

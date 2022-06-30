@@ -25,6 +25,13 @@
    Transferência
    Pagar boleto 
 
+
+   ###TODO
+   - Adicionar regra para valisar se o usuário está ativo nas "operações"
+   - Limpar o código
+
+
+
   ##########################################################################################################
 
 exemplo de execução
