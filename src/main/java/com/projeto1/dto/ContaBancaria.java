@@ -9,13 +9,13 @@ public class ContaBancaria {
     private LocalDateTime dataAbertura;
     private LocalDateTime dataEncerramento;
     private BigDecimal saldo;
-    private List<HistoricoMovimentacoes> HistoricoMovimentacoes;
+    private List<HistoricoMovimentacoes> historicoMovimentacoes;
 
     public ContaBancaria(LocalDateTime dataAbertura, LocalDateTime dataEncerramento, BigDecimal saldo, List<HistoricoMovimentacoes> historicoMovimentacoes) {
         this.dataAbertura = dataAbertura;
         this.dataEncerramento = dataEncerramento;
         this.saldo = saldo;
-        this.HistoricoMovimentacoes = historicoMovimentacoes;
+        this.historicoMovimentacoes = historicoMovimentacoes;
     }
 
     public LocalDateTime getDataAbertura() {
@@ -43,10 +43,10 @@ public class ContaBancaria {
     }
 
     public List<HistoricoMovimentacoes> getHistoricoMovimentacoes() {
-        return HistoricoMovimentacoes;
+        return historicoMovimentacoes;
     }
 
     public void setHistoricoMovimentacoes(HistoricoMovimentacoes historicoMovimentacoes) {
-        HistoricoMovimentacoes.add(historicoMovimentacoes);
+        this.historicoMovimentacoes.add(historicoMovimentacoes);
     }
 }

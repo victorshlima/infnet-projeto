@@ -14,19 +14,17 @@ import static com.projeto1.mensagens.MensagensEnum.OPERACAO_CONCLUIDA;
 
 public class Transferencia {
 
+    public void transferir(Usuario usuarioOrigen, Usuario usuarioDestino, BigDecimal valorTransferencia) {
 
-    public Transferencia() {}
+        if (Boolean.TRUE.equals(new Saldo().verificaSaldo(usuarioOrigen, valorTransferencia))) {
 
-    public void transferir(Usuario usuarioOrigen , Usuario usuarioDestino, BigDecimal valorTransferencia){
-        if (new Saldo().verificaSaldo(usuarioOrigen, valorTransferencia)){
-
-            BigDecimal  novoSaldo =  usuarioOrigen.getConta().getSaldo().subtract(valorTransferencia);
+            BigDecimal novoSaldo = usuarioOrigen.getConta().getSaldo().subtract(valorTransferencia);
             usuarioOrigen.getConta().setHistoricoMovimentacoes(
                     new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.TRANSFERENCIA, LocalDateTime.now(),
-                    valorTransferencia, usuarioOrigen.getConta().getSaldo(), novoSaldo, usuarioDestino.getNomeUsuario()));
+                            valorTransferencia, usuarioOrigen.getConta().getSaldo(), novoSaldo, usuarioDestino.getNomeUsuario()));
             usuarioOrigen.getConta().setSaldo(novoSaldo);
 
-            BigDecimal novoSaldoDestino =  usuarioDestino.getConta().getSaldo().add(valorTransferencia);
+            BigDecimal novoSaldoDestino = usuarioDestino.getConta().getSaldo().add(valorTransferencia);
             usuarioDestino.getConta().setHistoricoMovimentacoes(new HistoricoMovimentacoes(UUID.randomUUID(),
                     TipoMovimentacao.TRANSFERENCIA, LocalDateTime.now(), valorTransferencia, usuarioDestino.getConta().getSaldo(), novoSaldoDestino, usuarioOrigen.getNomeUsuario()));
             usuarioDestino.getConta().setSaldo(novoSaldo);

@@ -6,15 +6,15 @@ import java.util.UUID;
 public class Usuario {
 
     private UUID uuid;
-    private String usuario;
+    private String nomeUsuario;
     private String senha;
     private Status status;
     private Pessoa pessoa;
     private ContaBancaria contaBancaria;
 
-    public Usuario(UUID uuid, String usuario, String senha, Status status, Pessoa pessoa, ContaBancaria conta) {
+    public Usuario(UUID uuid, String nomeUsuario, String senha, Status status, Pessoa pessoa, ContaBancaria conta) {
         this.uuid = uuid;
-        this.usuario = usuario;
+        this.nomeUsuario = nomeUsuario;
         this.senha = senha;
         this.status = status;
         this.pessoa = pessoa;
@@ -30,11 +30,11 @@ public class Usuario {
     }
 
     public String getNomeUsuario() {
-        return usuario;
+        return nomeUsuario;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
     }
 
     public String getSenha() {
@@ -74,11 +74,11 @@ public class Usuario {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Usuario usuario1 = (Usuario) o;
-        return Objects.equals(uuid, usuario1.uuid) && Objects.equals(usuario, usuario1.usuario) && Objects.equals(senha, usuario1.senha) && status == usuario1.status && Objects.equals(pessoa, usuario1.pessoa) && Objects.equals(contaBancaria, usuario1.contaBancaria);
+        return Objects.equals(uuid, usuario1.uuid) && Objects.equals(nomeUsuario, usuario1.nomeUsuario) && Objects.equals(senha, usuario1.senha) && status == usuario1.status && Objects.equals(pessoa, usuario1.pessoa) && Objects.equals(contaBancaria, usuario1.contaBancaria);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, usuario, senha, status, pessoa, contaBancaria);
+        return Objects.hash(uuid, nomeUsuario, senha, status, pessoa, contaBancaria);
     }
 }

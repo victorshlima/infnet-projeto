@@ -39,7 +39,7 @@ public class HistoricoMovimentacoes {
     }
 
     public void setNomeUsuario(String nomeUsuario) {
-        nomeUsuario = nomeUsuario;
+        this.nomeUsuario = nomeUsuario;
     }
 
     public UUID getUuid() {

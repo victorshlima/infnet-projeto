@@ -1,4 +1,5 @@
 
+Exercício - 1)
 
    ##########################################################################################################
                                        Banco Merci -  Caixa eletronico
@@ -25,6 +26,16 @@
    Transferência
    Pagar boleto 
 
+
+
+    Execício 3
+   
+    //TODO Design pattern para ter só um repository (singleton)
+    //TODO notificar as movimentações observer
+   //TODO builder para o usuário
+   //TODO factory
+   //TODO swith substituir por design patern
+ 
 
    ###TODO
    - Adicionar regra para valisar se o usuário está ativo nas "operações"

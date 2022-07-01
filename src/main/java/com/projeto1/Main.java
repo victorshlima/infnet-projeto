@@ -13,69 +13,77 @@ import static com.projeto1.mensagens.MensagensEnum.*;
 
 public class Main {
 
-    public static void main (String[] args) {
+    private static Scanner scanner = new Scanner(System.in);
+    private static Usuario usuario;
+
+    public static void main(String[] args) {
+        imprimirMensagemIncial();
+        logar();
+        iniciarPrograma();
+        imprimirMensagemFinal();
+    }
+
+    public static void imprimirMensagemIncial(){
         MensagensUtils.printMensagem(MENSAGEM_INICIAL.getDescricao());
         MensagensUtils.printMensagem(PARA_SAIR.getDescricao());
-        login();
-        iniciaPrograma();
     }
 
-    public static Scanner scanner = new Scanner(System.in);
-    public static Usuario usuario;
-
-    public static void iniciaPrograma(){
+    public static void imprimirMensagemFinal(){
+        MensagensUtils.printMensagem(MENSAGEM_FINAL.getDescricao());
+    }
+    public static void iniciarPrograma() {
         MensagensUtils.printMensagem(OPERACOES.getDescricao());
-            while (scanner.hasNext()){
-                if (usuario == null){
-                    MensagensUtils.printMensagem(USUARIO_INVALIDO.getDescricao());
-                    break;
-                }
-                excecutarOperacoes(usuario);
+        while (scanner.hasNext()) {
+            if (usuario == null) {
+                MensagensUtils.printMensagem(USUARIO_INVALIDO.getDescricao());
+                break;
             }
-            MensagensUtils.printMensagem(MENSAGEM_FINAL.getDescricao());
+            excecutarOperacoes(usuario);
         }
+    }
 
-    public static void login(){
+    public static void logar() {
         MensagensUtils.printMensagem(MENSAGEM_LOGIN.getDescricao());
-        String user =  scanner.next();
+        String user = scanner.next();
         MensagensUtils.printMensagem(MENSAGEM_SENHA.getDescricao());
-        String senha =  scanner.next();
-         usuario =  new Autenticacao().autenticar(user,senha );
+        String senha = scanner.next();
+        usuario = new Autenticacao().autenticar(user, senha);
 
     }
 
-    public static void excecutarOperacoes(Usuario usuarioLogado){
+    public static void excecutarOperacoes(Usuario usuarioLogado) {
         MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
-        while (scanner.hasNext()){
-            String entradaUsario =  scanner.next();
-            switch (entradaUsario){
-                case "saque" :
-                {
-                    new Saque().sacar(usuarioLogado, entradaBigDecimal(scanner));
+        while (scanner.hasNext()) {
+            String entradaUsario = scanner.next();
+            switch (entradaUsario) {
+                case "saque": {
+                    new Saque().sacar(usuarioLogado, entradaTipoBigDecimal(scanner));
                 }
                 break;
                 case "transf": {
                     MensagensUtils.printMensagem(MENSAGEM_TRANSF_DESTINO.getDescricao());
-                    String usuarioDestino =  scanner.next();
-                    new Transferencia().transferir(usuarioLogado, new Repository().getUsuarioPeloNome(usuarioDestino), entradaBigDecimal(scanner));
+                    String usuarioDestino = scanner.next();
+                    new Transferencia().transferir(usuarioLogado, new Repository().getUsuarioPeloNome(usuarioDestino), entradaTipoBigDecimal(scanner));
                 }
-                    break;
+                break;
                 case "desposito": {
-                    entradaBigDecimal(scanner);
-                    new Deposito().depositar(usuarioLogado, entradaBigDecimal(scanner));
+                    entradaTipoBigDecimal(scanner);
+                    new Deposito().depositar(usuarioLogado, entradaTipoBigDecimal(scanner));
                 }
-                    break;
-                case  "extrato" :{
+                break;
+                case "extrato": {
                     new Extrato().imprimir(usuarioLogado);
                 }
                 break;
-                case  "saldo" : MensagensUtils.printMensagem( MENSAGEM_SALDO.getDescricao() + usuarioLogado.getConta().getSaldo());
+                case "saldo":
+                    MensagensUtils.printMensagem(MENSAGEM_SALDO.getDescricao() + usuarioLogado.getConta().getSaldo());
                     break;
-                case  "pagar boleto" :
+                case "pagar boleto":
                     break;
-                default: MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
+                default:
+                    MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
             }
-            if (entradaUsario.equals(EXIT.getDescricao())){
+            if (entradaUsario.equals(EXIT.getDescricao())) {
                 break;
             }
 
@@ -83,9 +91,9 @@ public class Main {
 
     }
 
-    public static BigDecimal entradaBigDecimal(Scanner scanner) {
+    public static BigDecimal entradaTipoBigDecimal(Scanner scanner) {
         MensagensUtils.printMensagem("Insira o valor seprado por .");
-        return  scanner.nextBigDecimal();
+        return scanner.nextBigDecimal();
     }
 
 }
