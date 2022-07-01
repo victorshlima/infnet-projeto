@@ -29,6 +29,7 @@ public class Extrato {
         else return "";
     }
 
+    //Não seria o ideal o usuário ter isso, apenas para auxiliar nos testes
     public void imprimeTodos(List<Usuario> usuarios) {
         usuarios.stream().forEach(u -> imprimir(u));
     }

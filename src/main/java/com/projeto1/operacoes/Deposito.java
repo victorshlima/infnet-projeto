@@ -16,12 +16,10 @@ import static com.projeto1.mensagens.MensagensEnum.USUARIO_INATIVO;
 public class Deposito {
 
     public void depositar(Usuario usuario, BigDecimal valorDeposito) {
-
         if (new Autenticacao().verificaUsuario(usuario)) {
-            BigDecimal novoSaldo = usuario.getConta().getSaldo().add(valorDeposito);
             usuario.getConta().setHistoricoMovimentacoes(new HistoricoMovimentacoes(UUID.randomUUID(),
-                    TipoMovimentacao.DEPOSITO, LocalDateTime.now(), valorDeposito, usuario.getConta().getSaldo(), novoSaldo));
-            usuario.getConta().setSaldo(novoSaldo);
+                    TipoMovimentacao.DEPOSITO, LocalDateTime.now(), valorDeposito, usuario.getConta().getSaldo(), valorDeposito));
+            usuario.getConta().setSaldo(valorDeposito);
             MensagensUtils.printMensagem(OPERACAO_CONCLUIDA.getDescricao());
         } else {
             MensagensUtils.printMensagem(USUARIO_INATIVO.getDescricao());

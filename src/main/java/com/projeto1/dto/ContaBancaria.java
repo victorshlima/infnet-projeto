@@ -39,7 +39,7 @@ public class ContaBancaria {
     }
 
     public void setSaldo(BigDecimal saldo) {
-        this.saldo = saldo;
+        this.saldo = this.getSaldo().add(saldo);
     }
 
     public List<HistoricoMovimentacoes> getHistoricoMovimentacoes() {
