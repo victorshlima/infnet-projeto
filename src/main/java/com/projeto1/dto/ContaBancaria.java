@@ -38,8 +38,12 @@ public class ContaBancaria {
         return saldo;
     }
 
-    public void setSaldo(BigDecimal saldo) {
-        this.saldo = this.getSaldo().add(saldo);
+    public void somarSaldo(BigDecimal valor) {
+        this.saldo = this.getSaldo().add(valor);
+    }
+
+    public void subtrairSaldo(BigDecimal valor) {
+        this.saldo = this.getSaldo().subtract(valor);
     }
 
     public List<HistoricoMovimentacoes> getHistoricoMovimentacoes() {

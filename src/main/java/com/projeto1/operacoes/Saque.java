@@ -16,9 +16,11 @@ public class Saque {
     public void sacar(Usuario usuario, BigDecimal valorSaque) {
 
         if (Boolean.TRUE.equals(new Saldo().verificaSaldo(usuario, valorSaque))) {
-            BigDecimal novoSaldo = usuario.getConta().getSaldo().subtract(valorSaque);
-            usuario.getConta().setHistoricoMovimentacoes(new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.SAQUE, LocalDateTime.now(), valorSaque, usuario.getConta().getSaldo(), novoSaldo));
-            usuario.getConta().setSaldo(novoSaldo);
+            BigDecimal saldoAntigo = usuario.getConta().getSaldo();
+            usuario.getConta().subtrairSaldo(valorSaque);
+            BigDecimal saldoNovo = usuario.getConta().getSaldo();
+            usuario.getConta().setHistoricoMovimentacoes(
+                    new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.SAQUE, LocalDateTime.now(), valorSaque, saldoAntigo, saldoNovo));
             MensagensUtils.printMensagem(OPERACAO_CONCLUIDA.getDescricao());
         } else {
             MensagensUtils.printMensagem(MENSAGEM_ERRO_TRANSFERENCIA.getDescricao());

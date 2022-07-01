@@ -1,16 +1,18 @@
 package operacoes;
 
-import com.projeto1.autenticacao.Autenticacao;
+import com.projeto1.acesso.Autenticacao;
 import com.projeto1.dto.Usuario;
 import com.projeto1.operacoes.Saldo;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import java.math.BigDecimal;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SaldoTest {
 
+
+
+    @DisplayName("QUANDO_USUARIO_ATIVO_SALDO_RETORNA_SALDO")
     @Test
     public void  QUANDO_USUARIO_ATIVO_SALDO_RETORNA_SALDO (){
         Autenticacao autenticacao = new Autenticacao();

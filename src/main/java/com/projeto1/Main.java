@@ -1,6 +1,6 @@
 package com.projeto1;
 
-import com.projeto1.autenticacao.Autenticacao;
+import com.projeto1.acesso.Autenticacao;
 import com.projeto1.dto.Usuario;
 import com.projeto1.mensagens.MensagensUtils;
 import com.projeto1.operacoes.*;
@@ -48,7 +48,6 @@ public class Main {
         MensagensUtils.printMensagem(MENSAGEM_SENHA.getDescricao());
         String senha = scanner.next();
         usuario = new Autenticacao().autenticar(user, senha);
-
     }
 
     public static void excecutarOperacoes(Usuario usuarioLogado) {
@@ -58,35 +57,36 @@ public class Main {
             switch (entradaUsario) {
                 case "saque": {
                     new Saque().sacar(usuarioLogado, entradaTipoBigDecimal(scanner));
+                    MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
                 }
                 break;
                 case "transf": {
                     MensagensUtils.printMensagem(MENSAGEM_TRANSF_DESTINO.getDescricao());
                     String usuarioDestino = scanner.next();
                     new Transferencia().transferir(usuarioLogado, new Repository().getUsuarioPeloNome(usuarioDestino), entradaTipoBigDecimal(scanner));
+                    MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
                 }
                 break;
-                case "desposito": {
-                    entradaTipoBigDecimal(scanner);
+                case "deposito": {
                     new Deposito().depositar(usuarioLogado, entradaTipoBigDecimal(scanner));
+                    MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
                 }
                 break;
                 case "extrato": {
                     new Extrato().imprimir(usuarioLogado);
+                    MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
                 }
                 break;
                 case "saldo":
                     MensagensUtils.printMensagem(MENSAGEM_SALDO.getDescricao() + usuarioLogado.getConta().getSaldo());
+                    MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
                     break;
-                case "pagar boleto":
+                case "exit":
+                    scanner.close();
                     break;
                 default:
                     MensagensUtils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
             }
-            if (entradaUsario.equals(EXIT.getDescricao())) {
-                break;
-            }
-
         }
 
     }

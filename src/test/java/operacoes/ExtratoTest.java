@@ -1,10 +1,11 @@
 package operacoes;
 
-import com.projeto1.autenticacao.Autenticacao;
+import com.projeto1.acesso.Autenticacao;
 import com.projeto1.dto.Usuario;
 import com.projeto1.operacoes.Extrato;
 import com.projeto1.operacoes.Saque;
 import com.projeto1.operacoes.Transferencia;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.util.List;
 
 public class ExtratoTest {
 
+    @DisplayName("QUANDO_USUARIO_ATIVO_IMPRIME_EXTRATO")
     @Test
     public void QUANDO_USUARIO_ATIVO_IMPRIME_EXTRATO(){
 
@@ -26,6 +28,7 @@ public class ExtratoTest {
 
     }
 
+    @DisplayName("QUANDO_USUARIO_TODOS_EXTRATOS")
     @Test
     public void QUANDO_USUARIO_TODOS_EXTRATOS(){
 

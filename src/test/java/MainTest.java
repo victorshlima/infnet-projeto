@@ -1,16 +1,13 @@
 import com.projeto1.Main;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import java.util.NoSuchElementException;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MainTest {
 
     @Test
     public void mainTest(){
-    assertDoesNotThrow(() -> Main.main(new String[]{""}) );
+        assertThrows(NoSuchElementException.class, () -> Main.main(new String[]{""}) );
     }
-
-
-
-
 }
