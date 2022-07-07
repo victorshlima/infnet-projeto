@@ -1,4 +1,4 @@
-package com.projeto.pattern.notificaoes;
+package com.projeto.pattern.notificacoes;
 
 public interface ObservadorEventos {
 

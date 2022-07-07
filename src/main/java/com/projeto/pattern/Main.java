@@ -1,7 +1,7 @@
 package com.projeto.pattern;
 
-import com.projeto.pattern.notificaoes.NotificacaoCelular;
-import com.projeto.pattern.notificaoes.NotificacaoEmail;
+import com.projeto.pattern.notificacoes.NotificacaoCelular;
+import com.projeto.pattern.notificacoes.NotificacaoEmail;
 import com.projeto.pattern.operacoes.Deposito;
 import com.projeto.pattern.acesso.Autenticacao;
 import com.projeto.pattern.modelo.Usuario;

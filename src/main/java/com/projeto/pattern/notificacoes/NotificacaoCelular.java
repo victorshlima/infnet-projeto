@@ -1,14 +1,13 @@
-package com.projeto.pattern.notificaoes;
+package com.projeto.pattern.notificacoes;
 
 import com.projeto.pattern.mensagens.Utils;
 
-public class NotificacaoEmail implements ObservadorEventos {
+public class NotificacaoCelular implements ObservadorEventos {
 
     private String mensagem;
 
-    public NotificacaoEmail(String mensagem) {
-        this.mensagem = "EMAIL";
-
+    public NotificacaoCelular(String mensagem) {
+        this.mensagem = "CELULAR";
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.projeto.pattern.notificaoes;
+package com.projeto.pattern.notificacoes;
 
 import java.util.ArrayList;
 import java.util.HashMap;

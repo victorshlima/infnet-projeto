@@ -47,15 +47,19 @@
 
    ##### Execício 3
    
-   Pattern Singleton - classe Repository - package com.projeto.pattern.repository - (criacional) 
-   //Como essa classe simula um banco, é necessário garantir que só exista uma 'banco',
-   apenas uma instancia desta classe
+   Pattern Singleton - (criacional) classe Repository - package com.projeto.pattern.repository - (criacional) 
+   //Como essa classe simula um banco, é necessário garantir que só exista uma 'banco',  apenas uma instância desta classe
 
    Patern Builder (criacional)  HistoricoMovimentacoesBuilder
 
+   Patern Observer (comportamental )com.projeto.pattern.notificacoes.ObservadorEventos
+
+   Patern 
 
    //observer
   //TODO caso o usuário erre 3 vezes o acesso, o observer é ativado é enviado e-mail
+
+
    // talvez o Switt  possa virar um state
    //talvez usar o decorator par notificar via -email e celular as ações
    // talvez o observer possa verificar as execuções e executar o decorator

@@ -2,7 +2,7 @@ package com.projeto.pattern.acesso;
 
 import com.projeto.pattern.modelo.Usuario;
 import com.projeto.pattern.mensagens.Utils;
-import com.projeto.pattern.notificaoes.GerenciadorEventos;
+import com.projeto.pattern.notificacoes.GerenciadorEventos;
 import com.projeto.pattern.repository.Repository;
 
 import java.util.Scanner;
