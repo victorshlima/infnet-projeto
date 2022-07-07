@@ -1,6 +1,7 @@
 package com.projeto1.repository;
 
 import com.projeto1.dto.*;
+import com.projeto1.mensagens.Utils;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
+import static com.projeto1.mensagens.MensagensEnum.USUARIO_DESTINO_NAO_EXISTE;
 
 public class Repository {
 
@@ -48,10 +51,15 @@ public class Repository {
     }
 
     public Usuario getUsuarioPeloNome(String nomeUsuario) {
-        return getUsuarios().stream()
-                .filter(u -> u.getNomeUsuario().equals(nomeUsuario))
-                .collect(Collectors.toList()).get(0);
-    }
+        try {
+            return getUsuarios().stream()
+                    .filter(u -> u.getNomeUsuario().equals(nomeUsuario))
+                    .collect(Collectors.toList()).get(0);
+        } catch (Exception e) {
+            Utils.printMensagem(USUARIO_DESTINO_NAO_EXISTE.getDescricao());
+            return null;
+        }
+   }
 
 
 }

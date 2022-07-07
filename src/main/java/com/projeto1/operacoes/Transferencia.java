@@ -4,7 +4,7 @@ import com.projeto1.acesso.Validacao;
 import com.projeto1.dto.HistoricoMovimentacoes;
 import com.projeto1.dto.TipoMovimentacao;
 import com.projeto1.dto.Usuario;
-import com.projeto1.mensagens.MensagensUtils;
+import com.projeto1.mensagens.Utils;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,8 +15,9 @@ import static com.projeto1.mensagens.MensagensEnum.*;
 public class Transferencia {
 
     public void transferir(Usuario usuarioOrigen, Usuario usuarioDestino, BigDecimal valorTransferencia) {
+
         if (!new Validacao().isAtivo(usuarioDestino)) {
-            MensagensUtils.printMensagem(USUARIO_INATIVO.getDescricao());
+            Utils.printMensagem(TRANSFERENCIA_USUARIO_INATIVO_ERRO.getDescricao());
             return;
         }
 
@@ -24,23 +25,24 @@ public class Transferencia {
 
             BigDecimal saldoAntesOrigem = usuarioOrigen.getConta().getSaldo();
             usuarioOrigen.getConta().subtrairSaldo(valorTransferencia);
-            registraTrasferencia(usuarioOrigen, valorTransferencia, saldoAntesOrigem, usuarioDestino.getNomeUsuario());
+            HistoricoMovimentacoes historicoMovimentacaoOrigem =   new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.TRANSFERENCIA, LocalDateTime.now(),
+                    valorTransferencia, saldoAntesOrigem, usuarioOrigen.getConta().getSaldo(), usuarioDestino.getNomeUsuario());
+            usuarioOrigen.getConta().setHistoricoMovimentacoes(historicoMovimentacaoOrigem);
 
             BigDecimal saldoAntesDestino = usuarioDestino.getConta().getSaldo();
             usuarioDestino.getConta().somarSaldo(valorTransferencia);
-            registraTrasferencia(usuarioDestino, valorTransferencia, saldoAntesDestino, usuarioOrigen.getNomeUsuario());
 
-            MensagensUtils.printMensagem(OPERACAO_CONCLUIDA.getDescricao());
+
+            HistoricoMovimentacoes historicoMovimentacaoDestino =   new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.TRANSFERENCIA, LocalDateTime.now(),
+                    valorTransferencia, saldoAntesDestino, usuarioDestino.getConta().getSaldo(), usuarioOrigen.getNomeUsuario());
+            usuarioDestino.getConta().setHistoricoMovimentacoes(historicoMovimentacaoDestino);
+
+            Utils.printMensagem(SUCESSO_TRANSFERENCIA.toString());
+            Utils.printMensagem(historicoMovimentacaoOrigem.toStringTransferencia());
+
         } else {
-            MensagensUtils.printMensagem(MENSAGEM_ERRO_TRANSFERENCIA.getDescricao());
+            Utils.printMensagem(MENSAGEM_ERRO_SALDO_INSUFICIENTE_TRANSFERENCIA.getDescricao() + usuarioOrigen.getConta().getSaldo());
         }
-    }
-
-    private void registraTrasferencia(Usuario usuario, BigDecimal valorTransferencia, BigDecimal saldoAntes, String nomeUsuario) {
-
-        usuario.getConta().setHistoricoMovimentacoes(
-                new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.TRANSFERENCIA, LocalDateTime.now(),
-                        valorTransferencia, saldoAntes, usuario.getConta().getSaldo(), nomeUsuario));
     }
 
 }

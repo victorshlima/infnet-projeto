@@ -9,7 +9,6 @@ public class MensagensTest {
 
     @Test
     public void MensagemInicial(){
-        assertEquals("----------------Bem Vindo----------------", MENSAGEM_INICIAL.getDescricao());
-
+        assertEquals("----------------Bem Vindo----------------\n", MENSAGEM_INICIAL.getDescricao());
     }
 }

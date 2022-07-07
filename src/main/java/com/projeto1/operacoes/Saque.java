@@ -3,7 +3,7 @@ package com.projeto1.operacoes;
 import com.projeto1.dto.HistoricoMovimentacoes;
 import com.projeto1.dto.TipoMovimentacao;
 import com.projeto1.dto.Usuario;
-import com.projeto1.mensagens.MensagensUtils;
+import com.projeto1.mensagens.Utils;
 
 import static com.projeto1.mensagens.MensagensEnum.*;
 
@@ -19,11 +19,14 @@ public class Saque {
             BigDecimal saldoAntigo = usuario.getConta().getSaldo();
             usuario.getConta().subtrairSaldo(valorSaque);
             BigDecimal saldoNovo = usuario.getConta().getSaldo();
-            usuario.getConta().setHistoricoMovimentacoes(
-                    new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.SAQUE, LocalDateTime.now(), valorSaque, saldoAntigo, saldoNovo));
-            MensagensUtils.printMensagem(OPERACAO_CONCLUIDA.getDescricao());
+
+            HistoricoMovimentacoes historicoMovimentacao =new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.SAQUE, LocalDateTime.now(), valorSaque, saldoAntigo, saldoNovo);
+                    usuario.getConta().setHistoricoMovimentacoes(historicoMovimentacao);
+            Utils.printMensagem(OPERACAO_CONCLUIDA.getDescricao());
+            Utils.printMensagem(historicoMovimentacao.toString());
         } else {
-            MensagensUtils.printMensagem(MENSAGEM_ERRO_TRANSFERENCIA.getDescricao());
+            Utils.printMensagem(MENSAGEM_ERRO_SALDO_INSUFICIENTE_SAQUE.getDescricao() + usuario.getConta().getSaldo());
+
         }
     }
 

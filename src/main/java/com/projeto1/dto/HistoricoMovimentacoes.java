@@ -102,4 +102,24 @@ public class HistoricoMovimentacoes {
     public int hashCode() {
         return Objects.hash(uuid, tipoMovimentacao, dataMovimentacao, valor, saldoAntes, saldoDepois);
     }
+
+    @Override
+    public String toString() {
+        return " Movimentação : " +
+                " tipoMovimentacao: " + tipoMovimentacao +
+                " dataMovimentacao: " + dataMovimentacao +
+                " valor: " + valor +
+                " saldoAntes: " + saldoAntes +
+                " saldoDepois: " + saldoDepois;
+    }
+
+    public String toStringTransferencia() {
+        return " Movimentação : " +
+                " tipoMovimentacao: " + tipoMovimentacao +
+                " dataMovimentacao: " + dataMovimentacao +
+                " valor: " + valor +
+                " saldoAntes: " + saldoAntes +
+                " saldoDepois: " + saldoDepois +
+                " nomeUsuario: " + nomeUsuario + "\n";
+    }
 }
