@@ -24,7 +24,6 @@ public final class Repository {
 
     private Repository() {
         if (instance == null){
-        instance = new Repository();
         inicializaBase();
         }
     }

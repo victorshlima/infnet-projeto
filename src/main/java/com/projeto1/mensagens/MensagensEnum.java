@@ -33,7 +33,13 @@ public enum MensagensEnum {
     MENSAGEM_TRANSF_DESTINO("Informe o usuário Destino \n"),
     USUARIO_INATIVO("Operação cancelada Usuário não está ativo, entre em contato com sua agência \n"),
     USUARIO_DESTINO_NAO_EXISTE("Usuário destino informado não existe, tente novamente informando um usuário ativo \n"),
-    TRANSFERENCIA_USUARIO_INATIVO_ERRO("Operação cancelada Usuário destino não está mais ativo \n");
+    TRANSFERENCIA_USUARIO_INATIVO_ERRO("Operação cancelada Usuário destino não está mais ativo \n"),
+
+    SIMULA_NOTIFICACAO(" Simula Notificação por: "),
+
+    ;
+
+
     MensagensEnum(String descricao){
         this.descricao = descricao;
     }

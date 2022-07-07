@@ -51,13 +51,18 @@
    //Como essa classe simula um banco, é necessário garantir que só exista uma 'banco',
    apenas uma instancia desta classe
 
+   Patern Builder (criacional)  HistoricoMovimentacoesBuilder
 
 
-   //TODO Design pattern para ter só um repository (singleton)
-   //TODO notificar as movimentações observer
-   //TODO builder para o usuário
-   //TODO factory
-   //TODO swith substituir por design patern
+   //observer
+  //TODO caso o usuário erre 3 vezes o acesso, o observer é ativado é enviado e-mail
+   // talvez o Switt  possa virar um state
+   //talvez usar o decorator par notificar via -email e celular as ações
+   // talvez o observer possa verificar as execuções e executar o decorator
+  /// observer ao executar uma operaçõe envia emial e gera log?
+    /// observer ao errar 3 vezes a senha envia email, usuário inativo tentado logar gera ALERTA interno, abre chamado
+
+
  
 
 

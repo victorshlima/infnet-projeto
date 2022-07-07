@@ -1,5 +1,7 @@
 package com.projeto.pattern;
 
+import com.projeto.pattern.notificaoes.NotificacaoCelular;
+import com.projeto.pattern.notificaoes.NotificacaoEmail;
 import com.projeto.pattern.operacoes.Deposito;
 import com.projeto.pattern.acesso.Autenticacao;
 import com.projeto.pattern.modelo.Usuario;
@@ -20,8 +22,12 @@ public class Main {
     private static Usuario usuario;
 
     public static void main(String[] args) {
+
+        Autenticacao autenticacao =  new Autenticacao();
+        autenticacao.gerenciadorEventos.seguir("erro_login", new NotificacaoEmail(SIMULA_NOTIFICACAO.getDescricao()));
+        autenticacao.gerenciadorEventos.seguir("erro_login", new NotificacaoCelular(SIMULA_NOTIFICACAO.getDescricao()));
         Utils.imprimirMensagemIncial();
-        usuario = Autenticacao.logar();
+        usuario = autenticacao.logar();
         iniciarPrograma();
         Utils.imprimirMensagemFinal();
     }
