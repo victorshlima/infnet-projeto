@@ -1,4 +1,4 @@
-package com.projeto1.dto;
+package com.projeto.pattern.modelo;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

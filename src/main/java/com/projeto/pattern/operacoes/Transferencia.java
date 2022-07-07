@@ -1,14 +1,13 @@
-package com.projeto1.operacoes;
+package com.projeto.pattern.operacoes;
 
-import com.projeto1.acesso.Validacao;
-import com.projeto1.modelo.HistoricoMovimentacoes;
-import com.projeto1.modelo.TipoMovimentacao;
-import com.projeto1.modelo.Usuario;
-import com.projeto1.mensagens.Utils;
+import com.projeto.pattern.acesso.Validacao;
+import com.projeto.pattern.modelo.HistoricoMovimentacoes;
+import com.projeto.pattern.modelo.HistoricoMovimentacoesBuilder;
+import com.projeto.pattern.modelo.TipoMovimentacao;
+import com.projeto.pattern.modelo.Usuario;
+import com.projeto.pattern.mensagens.Utils;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 import static com.projeto1.mensagens.MensagensEnum.*;
 
@@ -25,16 +24,28 @@ public class Transferencia {
 
             BigDecimal saldoAntesOrigem = usuarioOrigen.getConta().getSaldo();
             usuarioOrigen.getConta().subtrairSaldo(valorTransferencia);
-            HistoricoMovimentacoes historicoMovimentacaoOrigem =   new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.TRANSFERENCIA, LocalDateTime.now(),
-                    valorTransferencia, saldoAntesOrigem, usuarioOrigen.getConta().getSaldo(), usuarioDestino.getNomeUsuario());
+
+            HistoricoMovimentacoes historicoMovimentacaoOrigem = HistoricoMovimentacoesBuilder.builder()
+                    .addTipoMovimentacao(TipoMovimentacao.TRANSFERENCIA)
+                    .addValor(valorTransferencia)
+                    .addSaldoAntes(saldoAntesOrigem)
+                    .addSaldoDepois(usuarioOrigen.getConta().getSaldo())
+                    .addNomeUsuario(usuarioDestino.getNomeUsuario())
+                    .build();
+
             usuarioOrigen.getConta().setHistoricoMovimentacoes(historicoMovimentacaoOrigem);
 
             BigDecimal saldoAntesDestino = usuarioDestino.getConta().getSaldo();
             usuarioDestino.getConta().somarSaldo(valorTransferencia);
 
+            HistoricoMovimentacoes historicoMovimentacaoDestino = HistoricoMovimentacoesBuilder.builder()
+                    .addTipoMovimentacao(TipoMovimentacao.TRANSFERENCIA)
+                    .addValor(valorTransferencia)
+                    .addSaldoAntes(saldoAntesDestino)
+                    .addSaldoDepois(usuarioDestino.getConta().getSaldo())
+                    .addNomeUsuario(usuarioOrigen.getNomeUsuario())
+                    .build();
 
-            HistoricoMovimentacoes historicoMovimentacaoDestino =   new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.TRANSFERENCIA, LocalDateTime.now(),
-                    valorTransferencia, saldoAntesDestino, usuarioDestino.getConta().getSaldo(), usuarioOrigen.getNomeUsuario());
             usuarioDestino.getConta().setHistoricoMovimentacoes(historicoMovimentacaoDestino);
 
             Utils.printMensagem(SUCESSO_TRANSFERENCIA.toString());

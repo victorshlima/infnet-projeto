@@ -1,7 +1,7 @@
-package com.projeto1.repository;
+package com.projeto.pattern.repository;
 
-import com.projeto1.modelo.*;
-import com.projeto1.mensagens.Utils;
+import com.projeto.pattern.modelo.*;
+import com.projeto.pattern.mensagens.Utils;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,20 +12,38 @@ import java.util.stream.Collectors;
 
 import static com.projeto1.mensagens.MensagensEnum.USUARIO_DESTINO_NAO_EXISTE;
 
-public class Repository {
+public final class Repository {
 
-    public Repository() {
-        inicializaBase();
-    }
-
+    private static Repository instance;
     private List<Usuario> usuarios = new ArrayList<>();
 
     public List<Usuario> getUsuarios() {
         return usuarios;
     }
 
+
+    private Repository() {
+        if (instance == null){
+        instance = new Repository();
+        inicializaBase();
+        }
+    }
+    public static Repository getInstance() {
+        if (instance == null) {
+            instance = new Repository();
+        }
+        return instance;
+    }
+
+
     public void inicializaBase() {
-        HistoricoMovimentacoes historicoMovimentacaoJasmin = new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.ENTRADA, LocalDateTime.now(), BigDecimal.valueOf(1000.00), BigDecimal.valueOf(0), BigDecimal.valueOf(1000.00));
+        HistoricoMovimentacoes historicoMovimentacaoJasmin = HistoricoMovimentacoesBuilder.builder()
+                .addTipoMovimentacao(TipoMovimentacao.ENTRADA)
+                .addValor(BigDecimal.valueOf(1000.00))
+                .addSaldoAntes( BigDecimal.valueOf(0))
+                .addSaldoDepois(BigDecimal.valueOf(1000.00))
+                .build();
+
         List<HistoricoMovimentacoes> historicoMovimentacoesJasmin = new ArrayList();
         historicoMovimentacoesJasmin.add(historicoMovimentacaoJasmin);
 
@@ -33,7 +51,14 @@ public class Repository {
                 new Pessoa(UUID.randomUUID(), "Jasmin", "Flores", "123.321.456-01", LocalDateTime.of(1990, 01, 01, 12, 12)),
                 new ContaBancaria(LocalDateTime.now(), LocalDateTime.now(), BigDecimal.valueOf(1000.00), historicoMovimentacoesJasmin)));
 
-        HistoricoMovimentacoes historicoMovimentacaoJoao = new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.ENTRADA, LocalDateTime.now(), BigDecimal.valueOf(2000.00), BigDecimal.valueOf(0), BigDecimal.valueOf(2000.00));
+        HistoricoMovimentacoes historicoMovimentacaoJoao = HistoricoMovimentacoesBuilder.builder()
+                .addTipoMovimentacao(TipoMovimentacao.ENTRADA)
+                .addValor(BigDecimal.valueOf(2000.00))
+                .addSaldoAntes( BigDecimal.valueOf(0))
+                .addSaldoDepois(BigDecimal.valueOf(2000.00))
+                .build();
+
+
         List<HistoricoMovimentacoes> historicoMovimentacoesJoao = new ArrayList();
         historicoMovimentacoesJoao.add(historicoMovimentacaoJoao);
 
@@ -41,7 +66,13 @@ public class Repository {
                 new Pessoa(UUID.randomUUID(), "Joao", "Alfredo", "321.123.456-02", LocalDateTime.of(1990, 02, 02, 12, 12)),
                 new ContaBancaria(LocalDateTime.now(), LocalDateTime.now(), BigDecimal.valueOf(2000.00), historicoMovimentacoesJoao)));
 
-        HistoricoMovimentacoes historicoMovimentacaoMaria = new HistoricoMovimentacoes(UUID.randomUUID(), TipoMovimentacao.ENTRADA, LocalDateTime.now(), BigDecimal.valueOf(3000.00), BigDecimal.valueOf(0), BigDecimal.valueOf(3000.00));
+       HistoricoMovimentacoes historicoMovimentacaoMaria = HistoricoMovimentacoesBuilder.builder()
+                .addTipoMovimentacao(TipoMovimentacao.ENTRADA)
+                .addValor(BigDecimal.valueOf(3000.00))
+                .addSaldoAntes( BigDecimal.valueOf(0))
+                .addSaldoDepois(BigDecimal.valueOf(3000.00))
+                .build();
+
         List<HistoricoMovimentacoes> historicoMovimentacoesMaria = new ArrayList();
         historicoMovimentacoesMaria.add(historicoMovimentacaoMaria);
 

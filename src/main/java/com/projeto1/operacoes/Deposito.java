@@ -1,8 +1,8 @@
 package com.projeto1.operacoes;
 
-import com.projeto1.dto.HistoricoMovimentacoes;
-import com.projeto1.dto.TipoMovimentacao;
-import com.projeto1.dto.Usuario;
+import com.projeto1.modelo.HistoricoMovimentacoes;
+import com.projeto1.modelo.TipoMovimentacao;
+import com.projeto1.modelo.Usuario;
 import com.projeto1.mensagens.Utils;
 
 import java.math.BigDecimal;

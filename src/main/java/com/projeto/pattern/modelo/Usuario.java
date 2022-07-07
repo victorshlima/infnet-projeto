@@ -1,4 +1,4 @@
-package com.projeto1.dto;
+package com.projeto.pattern.modelo;
 
 import java.util.Objects;
 import java.util.UUID;

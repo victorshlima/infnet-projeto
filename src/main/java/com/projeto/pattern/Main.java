@@ -1,10 +1,13 @@
-package com.projeto1;
+package com.projeto.pattern;
 
-import com.projeto1.acesso.Autenticacao;
-import com.projeto1.modelo.Usuario;
-import com.projeto1.mensagens.Utils;
-import com.projeto1.operacoes.*;
-import com.projeto1.repository.Repository;
+import com.projeto.pattern.operacoes.Deposito;
+import com.projeto.pattern.acesso.Autenticacao;
+import com.projeto.pattern.modelo.Usuario;
+import com.projeto.pattern.mensagens.Utils;
+import com.projeto.pattern.operacoes.Extrato;
+import com.projeto.pattern.operacoes.Saque;
+import com.projeto.pattern.operacoes.Transferencia;
+import com.projeto.pattern.repository.Repository;
 
 import java.util.Scanner;
 
@@ -12,6 +15,7 @@ import static com.projeto1.mensagens.MensagensEnum.*;
 
 public class Main {
 
+    private static Repository repository = Repository.getInstance();
     private static Scanner scanner = new Scanner(System.in);
     private static Usuario usuario;
 
@@ -47,7 +51,7 @@ public class Main {
                     Utils.printMensagem(MENSAGEM_TRANSF_DESTINO.getDescricao());
                     String usuarioDestino = scanner.next();
 
-                    Usuario usuarioDestinoTransferencia = new Repository().getUsuarioPeloNome(usuarioDestino);
+                    Usuario usuarioDestinoTransferencia = repository.getUsuarioPeloNome(usuarioDestino);
                     if (usuarioDestinoTransferencia != null) {
                         new Transferencia().transferir(usuarioLogado, usuarioDestinoTransferencia, Utils.entradaTipoBigDecimal(scanner));
                     }

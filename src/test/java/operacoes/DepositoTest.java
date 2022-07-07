@@ -1,9 +1,8 @@
 package operacoes;
 
 import com.projeto1.acesso.Autenticacao;
-import com.projeto1.dto.Usuario;
+import com.projeto1.modelo.Usuario;
 import com.projeto1.operacoes.Deposito;
-import com.projeto1.operacoes.Saldo;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

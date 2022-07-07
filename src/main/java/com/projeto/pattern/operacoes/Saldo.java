@@ -1,6 +1,7 @@
-package com.projeto1.operacoes;
+package com.projeto.pattern.operacoes;
 
-import com.projeto1.modelo.Usuario;
+import com.projeto.pattern.modelo.Usuario;
+
 import java.math.BigDecimal;
 
 public class Saldo {

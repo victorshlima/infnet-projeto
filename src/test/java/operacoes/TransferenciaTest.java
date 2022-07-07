@@ -1,8 +1,7 @@
 package operacoes;
 
-import com.projeto1.Main;
 import com.projeto1.acesso.Autenticacao;
-import com.projeto1.dto.Usuario;
+import com.projeto1.modelo.Usuario;
 import com.projeto1.operacoes.Transferencia;
 import com.projeto1.repository.Repository;
 import org.junit.jupiter.api.DisplayName;

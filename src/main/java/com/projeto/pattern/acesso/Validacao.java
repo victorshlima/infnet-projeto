@@ -1,7 +1,7 @@
-package com.projeto1.acesso;
+package com.projeto.pattern.acesso;
 
-import com.projeto1.modelo.Status;
-import com.projeto1.modelo.Usuario;
+import com.projeto.pattern.modelo.Usuario;
+import com.projeto.pattern.modelo.Status;
 
 public class Validacao {
 

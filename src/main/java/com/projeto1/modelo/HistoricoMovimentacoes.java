@@ -1,4 +1,4 @@
-package com.projeto1.dto;
+package com.projeto1.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

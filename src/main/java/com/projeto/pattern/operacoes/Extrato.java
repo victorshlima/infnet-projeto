@@ -1,8 +1,8 @@
-package com.projeto1.operacoes;
+package com.projeto.pattern.operacoes;
 
-import com.projeto1.modelo.HistoricoMovimentacoes;
-import com.projeto1.modelo.Usuario;
-import com.projeto1.mensagens.Utils;
+import com.projeto.pattern.modelo.HistoricoMovimentacoes;
+import com.projeto.pattern.modelo.Usuario;
+import com.projeto.pattern.mensagens.Utils;
 
 import java.util.List;
 

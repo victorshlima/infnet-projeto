@@ -1,8 +1,8 @@
-package com.projeto1.acesso;
+package com.projeto.pattern.acesso;
 
-import com.projeto1.modelo.*;
-import com.projeto1.mensagens.Utils;
-import com.projeto1.repository.Repository;
+import com.projeto.pattern.modelo.Usuario;
+import com.projeto.pattern.mensagens.Utils;
+import com.projeto.pattern.repository.Repository;
 
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -11,11 +11,10 @@ import static com.projeto1.mensagens.MensagensEnum.*;
 
 public class Autenticacao {
 
-    Repository repository;
+    Repository repository = Repository.getInstance();
     private static Scanner scanner = new Scanner(System.in);
 
     public Autenticacao() {
-        this.repository = new Repository();
     }
 
     public Usuario autenticar(String nomeUsuario, String senha) {

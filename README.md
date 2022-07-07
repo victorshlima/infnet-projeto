@@ -47,6 +47,12 @@
 
    ##### Execício 3
    
+   Pattern Singleton - classe Repository - package com.projeto.pattern.repository - (criacional) 
+   //Como essa classe simula um banco, é necessário garantir que só exista uma 'banco',
+   apenas uma instancia desta classe
+
+
+
    //TODO Design pattern para ter só um repository (singleton)
    //TODO notificar as movimentações observer
    //TODO builder para o usuário
