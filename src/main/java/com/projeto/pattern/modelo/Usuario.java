@@ -3,21 +3,33 @@ package com.projeto.pattern.modelo;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Usuario {
+public class Usuario extends Pessoa{
 
     private UUID uuid;
     private String nomeUsuario;
     private String senha;
     private Status status;
-    private Pessoa pessoa;
+    private Cliente cliente;
     private ContaBancaria contaBancaria;
 
-    public Usuario(UUID uuid, String nomeUsuario, String senha, Status status, Pessoa pessoa, ContaBancaria conta) {
+    public Usuario(Usuario destino) {
+        super(destino);
+        if (destino != null) {
+          //  this.uuid = destino.uuid;
+            this.nomeUsuario = destino.nomeUsuario;
+            this.senha = destino.senha;
+            this.status = destino.status;
+            this.cliente = destino.cliente;
+            this.contaBancaria = destino.contaBancaria;
+        }
+    }
+
+    public Usuario(UUID uuid, String nomeUsuario, String senha, Status status, Cliente cliente, ContaBancaria conta) {
         this.uuid = uuid;
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
         this.status = status;
-        this.pessoa = pessoa;
+        this.cliente = cliente;
         this.contaBancaria = conta;
     }
 
@@ -53,12 +65,12 @@ public class Usuario {
         this.status = status;
     }
 
-    public Pessoa getPessoa() {
-        return pessoa;
+    public Cliente getPessoa() {
+        return cliente;
     }
 
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
+    public void setPessoa(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public ContaBancaria getConta() {
@@ -70,15 +82,21 @@ public class Usuario {
     }
 
     @Override
+    public Pessoa clone() {
+        return new Usuario(this);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Usuario usuario1 = (Usuario) o;
-        return Objects.equals(uuid, usuario1.uuid) && Objects.equals(nomeUsuario, usuario1.nomeUsuario) && Objects.equals(senha, usuario1.senha) && status == usuario1.status && Objects.equals(pessoa, usuario1.pessoa) && Objects.equals(contaBancaria, usuario1.contaBancaria);
+        if (!super.equals(o)) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(uuid, usuario.uuid) && Objects.equals(nomeUsuario, usuario.nomeUsuario) && Objects.equals(senha, usuario.senha) && status == usuario.status && Objects.equals(cliente, usuario.cliente) && Objects.equals(contaBancaria, usuario.contaBancaria);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(uuid, nomeUsuario, senha, status, pessoa, contaBancaria);
+        return Objects.hash(super.hashCode(), uuid, nomeUsuario, senha, status, cliente, contaBancaria);
     }
 }

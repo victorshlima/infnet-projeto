@@ -70,7 +70,7 @@ public class Main {
                 }
                 break;
                 case "extrato": {
-                    new Extrato().imprimir(usuarioLogado);
+                    new Extrato().imprimir((Usuario) usuarioLogado.clone());
                     Utils.printMensagem(DIGITE_NOVAMENTE_OPERACOES.getDescricao());
                 }
                 break;

@@ -15,7 +15,7 @@ public class Saque {
 
     public void sacar(Usuario usuario, BigDecimal valorSaque) {
 
-        if (Boolean.TRUE.equals(new Saldo().verificaSaldo(usuario, valorSaque))) {
+        if (Boolean.TRUE.equals(new Saldo().verificaSaldo((Usuario) usuario.clone(), valorSaque))) {
             BigDecimal saldoAntigo = usuario.getConta().getSaldo();
             usuario.getConta().subtrairSaldo(valorSaque);
 
@@ -31,7 +31,6 @@ public class Saque {
             Utils.printMensagem(historicoMovimentacao.toString());
         } else {
             Utils.printMensagem(MENSAGEM_ERRO_SALDO_INSUFICIENTE_SAQUE.getDescricao() + usuario.getConta().getSaldo());
-
         }
     }
 

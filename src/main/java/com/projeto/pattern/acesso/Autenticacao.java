@@ -27,7 +27,7 @@ public class Autenticacao {
                 .filter(u -> u.getSenha().equals(senha))
                 .collect(Collectors.toList()).get(0);
 
-        if (!new Validacao().isAtivo(usuario)) {
+        if (!new Validacao().isAtivo((Usuario) usuario.clone())) {
             Utils.printMensagem(USUARIO_INATIVO.getDescricao());
 
             return null;

@@ -15,7 +15,7 @@ public class Transferencia {
 
     public void transferir(Usuario usuarioOrigen, Usuario usuarioDestino, BigDecimal valorTransferencia) {
 
-        if (!new Validacao().isAtivo(usuarioDestino)) {
+        if (!new Validacao().isAtivo((Usuario) usuarioDestino.clone())) {
             Utils.printMensagem(TRANSFERENCIA_USUARIO_INATIVO_ERRO.getDescricao());
             return;
         }

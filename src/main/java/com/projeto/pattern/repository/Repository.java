@@ -47,7 +47,7 @@ public final class Repository {
         historicoMovimentacoesJasmin.add(historicoMovimentacaoJasmin);
 
         getUsuarios().add(new Usuario(UUID.randomUUID(), "jasmin", "123", Status.ATIVO,
-                new Pessoa(UUID.randomUUID(), "Jasmin", "Flores", "123.321.456-01", LocalDateTime.of(1990, 01, 01, 12, 12)),
+                new Cliente(UUID.randomUUID(), "Jasmin", "Flores", "123.321.456-01", LocalDateTime.of(1990, 01, 01, 12, 12)),
                 new ContaBancaria(LocalDateTime.now(), LocalDateTime.now(), BigDecimal.valueOf(1000.00), historicoMovimentacoesJasmin)));
 
         HistoricoMovimentacoes historicoMovimentacaoJoao = HistoricoMovimentacoesBuilder.builder()
@@ -62,7 +62,7 @@ public final class Repository {
         historicoMovimentacoesJoao.add(historicoMovimentacaoJoao);
 
         getUsuarios().add(new Usuario(UUID.randomUUID(), "joao", "123", Status.ATIVO,
-                new Pessoa(UUID.randomUUID(), "Joao", "Alfredo", "321.123.456-02", LocalDateTime.of(1990, 02, 02, 12, 12)),
+                new Cliente(UUID.randomUUID(), "Joao", "Alfredo", "321.123.456-02", LocalDateTime.of(1990, 02, 02, 12, 12)),
                 new ContaBancaria(LocalDateTime.now(), LocalDateTime.now(), BigDecimal.valueOf(2000.00), historicoMovimentacoesJoao)));
 
        HistoricoMovimentacoes historicoMovimentacaoMaria = HistoricoMovimentacoesBuilder.builder()
@@ -76,7 +76,7 @@ public final class Repository {
         historicoMovimentacoesMaria.add(historicoMovimentacaoMaria);
 
         getUsuarios().add(new Usuario(UUID.randomUUID(), "maria", "123", Status.BLOQUEADO,
-                new Pessoa(UUID.randomUUID(), "maria", "Pereira", "213.321.456-02", LocalDateTime.of(1990, 03, 03, 12, 12)),
+                new Cliente(UUID.randomUUID(), "maria", "Pereira", "213.321.456-02", LocalDateTime.of(1990, 03, 03, 12, 12)),
                 new ContaBancaria(LocalDateTime.now(), LocalDateTime.now(), BigDecimal.valueOf(3000.00), historicoMovimentacoesMaria)));
     }
 
