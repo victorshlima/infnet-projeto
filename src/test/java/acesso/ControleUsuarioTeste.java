@@ -19,16 +19,4 @@ public class ControleUsuarioTeste {
     assertEquals("jasmin", usuario.getNomeUsuario());
 
     }
-
-    @DisplayName("QUANDO_USUARIO_SENHA_INCORRETO_USUARIO_ATIVO_NAO_AUTENTICA")
-    @Test
-    public void QUANDO_USUARIO_SENHA_INCORRETO_USUARIO_ATIVO_NAO_AUTENTICA (){
-
-        Autenticacao autenticacao = new Autenticacao();
-
-        assertThrows(IndexOutOfBoundsException.class, ( ) ->  {
-            autenticacao.autenticar("jasmin", "1111") ;
-        } );
-
-    }
 }
