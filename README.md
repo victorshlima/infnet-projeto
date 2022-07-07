@@ -52,9 +52,10 @@
 
    Patern Builder (criacional)  HistoricoMovimentacoesBuilder
 
+   Patern Prototype (criacional) Enviar objeto clonado apra evitar a exposição dos dados
+
    Patern Observer (comportamental )com.projeto.pattern.notificacoes.ObservadorEventos
 
-   Patern 
 
    //observer
   //TODO caso o usuário erre 3 vezes o acesso, o observer é ativado é enviado e-mail
