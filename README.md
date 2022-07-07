@@ -1,43 +1,59 @@
 
-   ###Exercício - 1)
-   
-   ##################################################################################
+   ##### Exercício - 1)
+
                            Banco Merci -  Caixa eletronico
-   ###################################################################################
-   Essa aplicação simula as operações de um cliente em uma banco com uma interface de terminal para 
+
+   Essa aplicação simula as operações de um cliente em um banco com uma interface de terminal para 
    fins estudo do SOLID e Clean Code.
 
-   Necessário "Autenticar" para acessar a aplicação
-
-   ###   Usuário e senha na Classe Repository
-
-   ### Autenticação 
-   Login
-   ### 
-   Atualizar dados de usuário
+   Necessário "Autenticar" para acessar a aplicação, senhas na classe repository #(jasmin, 123)
    
-   ### Informações
+   *** Tentei não usar nenhuma biblioteca tipo jpa e banco e etc para ficar mais simples e focar no código e não usar coisas prontas.
+   
+   Java 11
+   Gradle
+   
+   Executar o Main
+   Jasmin
+   123
+   
+   após autenticar vc pode executar as operações escrevendo exatamente como aparece na tela.
+   
+   saldo
+   transf
+   saque
+   deposito
+   extrato
+   
+   Possui um nivel muito basico de tratamentos de erro por conta de simplicidade, siga o caminho feliz que vai dar bom.
+   
+   Possui teste
+
+   ##### Usuário e senha na Classe Repository
+
+   ##### Autenticação 
+   Login
+   Verificação de usuário (ativo, inativo)
+   
+   ##### Informações
    Extrato
    Saldo
 
-   ### Movimentações
+   ##### Movimentações
    Saque
    Deposito
-   Transferência
-   Pagar boleto 
+   Transferência 
 
 
-
-    Execício 3
+   ##### Execício 3
    
-    //TODO Design pattern para ter só um repository (singleton)
-    //TODO notificar as movimentações observer
+   //TODO Design pattern para ter só um repository (singleton)
+   //TODO notificar as movimentações observer
    //TODO builder para o usuário
    //TODO factory
    //TODO swith substituir por design patern
  
 
-  ##########################################################################################################
 
 ### Exemplo de execução
 
